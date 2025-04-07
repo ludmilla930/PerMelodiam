@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Per Melodiam</title> 
+        <style> 
+
+/*style dos footer-tabs*/
+#footer{
+    text-align: center;
+    background-color: rgb(150, 148, 156);
+    width:80%;
+    border: 10px outset;
+    border-color: rgb(150, 148, 156);
+    margin:auto;
+    padding: 10px;
+    font-family: Garamond, sans-serif; /*sans-serif é o plano B caso fantasy não dê*/
+    font-size: 14px;
+}
+.footer-tabs {
+list-style-type: none; /* retira bullet points */
+    padding: 0;
+    margin: 0;
+    display: flex; /* organiza items numa linha */
+    justify-content: center; /* centra as tabs */
+    gap: 20px; /* dá espaço entre tabs */
+}
+.footer-tabs li {
+    display: inline; /* confirma que list items estão em linha */
+}
+.footer-tabs a {
+    text-decoration: none; /* retira underline */
+    color: rgb(0, 0, 0); /* cor link */
+    padding: 10px 20px; /* Adiciona padding para área clicável */
+    border: 2px hidden rgb(250, 235, 232); /* border optional para tabs */
+    border-radius: 5px; /* corners */
+    background-color: rgb(150, 148, 156); /* Background color */
+    transition: background-color 0.3s; /* Smooth hover effect, quando o rato paira por cima*/
+}
+
+.footer-tabs a:hover {
+    background-color: rgb(150, 148, 156); /* Muda background quando cursor paira ou hover */
+    color: rgb(250, 235, 232); /* Muda text color on hover */
+}
+
+
+/*o style abaixo só afeta os paragrafos h2*/
+h2{color: rgb(94, 91, 100); /* cor existente */
+    font-family: "Garamond", sans-serif; 
+    font-size: 24px; /* Optional: Ajusta font size */
+    font-weight: bold; /* Optional: Ajusta font weight */
+}
+
+p{
+    font-family: "Garamond", sans-serif; 
+    font-size: 16px; /* Ajusta font size as needed */
+    color: rgb(0, 0, 0); /* Muda text color */
+    line-height: 1.5; /* Ajusta line spacing para melhor leitura visual */
+}
+
+body{background-color: rgb(234, 191, 185);
+}
+
+#breve_descricao{
+    background-color: rgb(255, 255, 255);
+    border: 10px double rgb(250, 235, 232);}
+
+
+#titulo{
+font-size: 60px;
+font-family: Garamond, sans-serif; /*sans-serif é o plano B caso Garamond não dê*/
+}
+
+a{
+    text-decoration:none; /*para mudar formato dos links*/
+    color:rgb(212, 123, 123);
+    font-family: Garamond, sans-serif; /*sans-serif é o plano B caso Garamond não dê*/
+    font-size: 14px;
+    font-weight: bold;
+    transition: color 0.3s; /* Smooth transition for color change */
+}
+
+
+#header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    width: 80%;
+    border: 10px double;
+    border-color: rgb(250, 235, 232);
+    margin: auto;
+    padding: 20px;
+    font-family: Garamond, sans-serif; 
+    font-size: 14px;
+    z-index: 1; /* Mantém-se acima de outros elementos se necessário */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+#hero {
+    background-image: url('hero.jpeg');
+    height: 100vh; /* Full viewport height */
+    min-height: 80vh; /* Garante um minimum height */
+    background-size: cover; /* Garante que a imagem cover/cobrir toda a secção */
+    background-repeat: no-repeat; /* Impede que a image não se repita*/
+    background-position: center; /* Centra a imagem */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    margin: 0; /* Remove qualquer margem que pode causar problemas de espaço*/
+    padding: 0; /* Remove qualquer padding que poderá afetar o layout */
+}
+
+
+/* Carousel styling */
+#carousel {
+    position: relative;
+        width: 100%;
+        height: 300px; /* Corresponde à height do carousel-container */
+        background-color: #ddd;
+            }
+
+            .carousel-container {
+                display: flex; /* Organiza images em linha */
+    width: 300%; /* Total width = 100% * number of images */
+    height: 100%; /* Corresponde à height do carousel */
+    transition: transform 0.5s ease-in-out; /* Suave transição de slides */
+            }
+
+            .carousel-image {
+                width: 100%; /* Cada imagem ocupa 100% do carousel's width */
+    height: 100%; /* Corresponde ao height do carousel */
+    object-fit: contain; /* Garante que a toda a imagem encaixa dentro do container */
+    flex-shrink: 1; /* Para diminuir as imagens */
+    }
+
+            #prev, #next {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background-color: rgba(0, 0, 0, 0.5);
+                color: white;
+                border: none;
+                padding: 10px;
+                cursor: pointer;
+            }
+
+            #prev {
+                left: 10px;
+            }
+
+            #next {
+                right: 10px;
+            }
+
+        /* Efeito Hover para titulos em imagens*/
+#split-banner a .hover-title {
+    color: white; /* cor titulo */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px; /* font size  grande*/
+    font-family: garamond, serif; /* Elegant font */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Adicionar sombra para profundidade */
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5));
+     /*  overlay Semi-transparent*/
+    opacity: 0; /* escondido por default */
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth fade-in e animação */
+    text-transform: uppercase; /* Faz o texto maiusculas */
+}
+
+#split-banner a:hover .hover-title {
+    opacity: 1; /* Mostra o titulo on hover */
+    transform: scale(1.1); /* Ligeiro zoom effect no titulo */
+}
+
+#split-banner a img {
+    transition: transform 0.3s ease-in-out; /* Smooth zoom effect */
+}
+
+#split-banner a:hover img {
+    transform: scale(1.05); /* Ligeiro zoom effect on hover */
+}
+
+.client-opinion img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    max-width: 400px;
+    margin: 0 auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.client-opinion p {
+    font-family: Garamond, sans-serif;
+    font-size: 16px;
+    color: rgb(94, 91, 100);
+    margin-top: 20px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+
+/* Botão de ver mais */
+.ver_mais {
+    display: inline-block;
+    text-align: center;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-family: "Garamond", sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(212, 123, 123);
+    border: 2px solid rgb(212, 123, 123);
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.ver_mais:hover {
+    background-color: rgb(150, 50, 50);
+    color: white;
+    text-decoration: underline;
+    transform: scale(1.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Garante que recipiente pai (parent container) centra o botão */
+#clients-banner {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+/* Secção de marcação serviços */
+#marcacao_servicos {
+    text-decoration: none; /* Retira underline do link */
+}
+
+
+#marcacao_servicos section {
+    margin: 40px auto; /* Centra o banner e dá espaço */
+    padding: 20px; /* Adiciona padding dentro do banner */
+    text-align: center; /* Center-align o conteúdo */
+    background-color: rgb(250, 235, 232); 
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligeira para profundidade */
+    max-width: 800px; /* Limita o width do banner */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth hover effect */
+    cursor: pointer; /* Mostra pointer cursor para indicar que é clicável */
+}
+
+#marcacao_servicos section:hover {
+    transform: scale(1.02); /* Ligeiro zoom effect on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Adiciona sombra forte on hover */
+}
+
+#marcacao_servicos h2 {
+    font-family: Garamond, sans-serif; /* font */
+    font-size: 24px; /* font size */
+    color: rgb(94, 91, 100); /* cor texto */
+    margin-bottom: 20px; /* Adiciona spacing abaixo do heading */
+}
+
+#marcacao_servicos p {
+    font-family: Garamond, sans-serif; /* font */
+    font-size: 16px; /* font size */
+    color: rgb(94, 91, 100); /* cor texto */
+    line-height: 1.5; /* Melhora readability */
+    margin-bottom: 0; /* Remove espaço extra abaixo do paragraph */
+}
+
+/*redes sociais*/
+#redes_sociais {
+    background-color: rgb(150, 148, 156); 
+    padding: 20px;
+    text-align: center;
+}
+
+#redes_sociais a {
+    text-decoration: none;
+    color: white;
+    margin: 0 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+#redes_sociais a:hover {
+    transform: scale(1.1); /* Ligeiro zoom effect on hover */
+}
+
+#redes_sociais img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%; /* Faz icons circulares */
+    transition: transform 0.3s ease-in-out;
+}
+
+#redes_sociais img:hover {
+    transform: scale(1.2); /* Ligeiro zoom effect on hover */
+}
+
+ </style>
+
+    </head>
+    <body> 
+        <div id="footer" style="position: relative;">
+            <h2 style="
+                font-family: Garamond, sans-serif; 
+                font-size: 20px; 
+                color: rgb(255, 255, 255); 
+                position: absolute; 
+                top: 50%; 
+                left: 10px; 
+                transform: translateY(-50%); 
+                margin: 0; 
+                text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Add shadow */" 
+           >
+                PER MELODIAM 𝄞
+            </h2>
+            <nav>
+                <ul class="footer-tabs" style="margin-left: 150px;"> <!-- Ajusta margin para alinhar tabs -->
+                    <li><a href="index.html">PÁGINA INICIAL</a></li>
+                    <li><a href="2about.html">SOBRE</a></li>
+                    <li><a href="3portfolio.html">PORTFOLIO</a></li>
+                    <li><a href="4clients.html">CLIENTES</a></li>
+                    <li><a href="5contacts.html">CONTACTOS</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    
+
+        <div id="header">  <!--"é para por uma caixinha centrada no CSS #header"-->
+        <h1 id="titulo">PER MELODIAM</h1>
+
+
+        <img src="logotipo.jpeg" width="300">
+        </div>
+    
+        <section id="hero" style="background-image:
+         url('hero.jpeg'); 
+        height: 100vh; /* Adjust height as needed */
+        min-height: 80vh; /* Ensures a minimum height */
+        background-size: cover; /* Ensures the entire image is visible */
+        background-repeat: no-repeat; /* Prevents the image from repeating */
+        background-position: center; /* Centers the image */
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        color: rgb(0, 0, 0); 
+        text-align: center;">
+            <!--<h1>Bem-vindos à Per Melodiam</h1> é o Texto em cima da imagem --> 
+        </section>
+
+        <section id="breve_descricao" style="display: flex; gap: 20px; padding: 20px;">
+            <!-- Secção "Sobre nós" -->
+            <div id="breve_descricao" style="flex: 1; padding: 10px; background-color: #ffffff; 
+            border: 1px double rgb(255, 255, 255);">
+                <h2>Bem-vindos!</h2>
+                <p>
+                    Apresentamos "Per Melodiam", um grupo musical para momentos da sua vida!
+                </p>
+                <p>
+                    Somos um grupo de quatro elementos, hábeis em vários instrumentos e dedicados a tornar a sua ocasião especial ainda mais inesquecível, com música personalizada para si. Realizamos cerimónias religiosas e civis, copo de água, corte do bolo e eventos.
+                </p>
+            </div>
+
+<!-- Secção Slideshow (Carousel)  -->
+<div id="carousel-section" style="flex: 1; text-align: center;">
+    <div id="carousel" style="position: relative; overflow: hidden; width: 100%; height: 300px; background-color: #ddd;">
+        <div class="carousel-container" style="display: flex; transition: transform 0.5s ease-in-out;">
+            <img src="java1.jpeg" alt="Slide 1" class="carousel-image">
+            <img src="java2.jpeg" alt="Slide 2" class="carousel-image">
+            <img src="java3.jpeg" alt="Slide 3" class="carousel-image">
+        </div>
+        <button id="prev" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background-color: rgba(0, 0, 0, 0.5); color: white; border: none; padding: 10px; cursor: pointer;">&#10094;</button>
+        <button id="next" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background-color: rgba(0, 0, 0, 0.5); color: white; border: none; padding: 10px; cursor: pointer;">&#10095;</button>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+    const carouselContainer = document.querySelector('.carousel-container');
+    const slides = document.querySelectorAll('.carousel-container img');
+    const prevButton = document.getElementById('prev');
+    const nextButton = document.getElementById('next');
+    let currentIndex = 0;
+
+    // Função para mostrar current slide
+    function showSlide(index) {
+        const slideWidth = slides[0].clientWidth; // Get the width of a single slide
+        carouselContainer.style.transform = `translateX(-${index * slideWidth}px)`; // Move the container
+    }
+
+    // Event listener for the "Previous" button
+    prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1; // Loop back to the last slide
+        showSlide(currentIndex);
+    });
+
+    // Event listener for the "Next" button
+    nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0; // Loop back to the first slide
+        showSlide(currentIndex);
+    });
+
+    // Auto-slide functionality
+    setInterval(() => {
+        currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+        showSlide(currentIndex);
+    }, 5000); // Change slide every 5 seconds
+</script>
+</section>
+
+<!-- Biografia e Portfolio -->
+<section id="split-banner" style="display: flex; gap: 20px; padding: 20px; background-color: rgb(250, 235, 232);">
+    <!-- Primeira Imagem com Titulo -->
+    <div style="flex: 1; position: relative; overflow: hidden; border-radius: 10px;">
+        <a href="2about.html" style="text-decoration: none; display: block; position: relative;">
+            <img src="about.jpeg" alt="Sobre nós" style="width: 100%; height: auto;">
+            <div class="hover-title">
+                Sobre Nós
+            </div>
+        </a>
+    </div>
+
+    <!-- Segunda Imagem com Titulo -->
+    <div style="flex: 1; position: relative; overflow: hidden; border-radius: 10px;">
+        <a href="3portfolio.html" style="text-decoration: none; display: block; position: relative;">
+            <img src="portfolio.jpeg" alt="Portfolio" style="width: 100%; height: auto;">
+            <div class="hover-title">
+                Portfolio
+            </div>
+        </a>
+    </div>
+</section>
+
+
+ <!-- Opinião Cliente-->
+ <section id="clients-banner" style="flex: 1; position: relative; overflow: hidden; border-radius: 10px; background-color: #fff; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 20px; text-align: center;">
+
+    <div class="client-opinion" style="max-width: 600px; margin: 0 auto;">
+        <img src="jessica.jpeg" alt="Jéssica" style="width: 100%; height: auto; border-radius: 10px; object-fit: cover; max-width: 400px; margin: 0 auto; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        <p style="font-family: Garamond, sans-serif; font-size: 16px; color: rgb(94, 91, 100); margin-top: 20px; line-height: 1.5;">
+            Jéssica:
+            "O serviço proporcionado pelas Per Melodium, não só foi muito bonito como foi 100% adaptado ao nosso gosto.
+            Fizemos uma cerimónia religiosa, e foram elas que sugeriram a maioria das músicas e nos orientaram em todo o processo.
+            Trataram também da organização com a igreja, pelo que foi um descanso para nós!!
+            Muito obrigada, em especial à Inês pela paciência que teve com as nossas dúvidas e indecisões. 🫶"
+        </p>
+    </div>
+    <!-- Botão de ver mais / See more button -->
+    <a href="4clients.html" class="ver_mais">Ver mais depoimentos</a>
+</section>
+
+   <!-- Secção de Marcacao Serviços -->
+<a href="5contacts.html" id="marcacao_servicos" style="text-decoration: none;">
+    <section style="margin: 40px auto; padding: 20px; text-align: center; background-color: rgb(250, 235, 232); border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); max-width: 800px; cursor: pointer;">
+        <h2 style="font-family: Garamond, sans-serif; font-size: 24px; color: rgb(94, 91, 100); margin-bottom: 20px;">Marcação de espetáculos</h2>
+        <p style="font-family: Garamond, sans-serif; font-size: 16px; color: rgb(94, 91, 100); line-height: 1.5; margin-bottom: 0;">
+            Clique aqui para entrar em contacto conosco e garantir os nossos serviços!
+        </p>
+    </section>
+</a>
+
+
+    </div>
+
+    <!-- Secção redes sociais -->
+<div id="redes_sociais" style="background-color: rgb(212, 123, 123); padding: 20px; text-align: center;">
+    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+        <a href="https://www.facebook.com/permelodiam" target="_blank" style="text-decoration: none; color: white;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" style="max-width: 50px; height: auto;">
+        </a>
+        <a href="https://www.instagram.com/permelodiam/" target="_blank" style="text-decoration: none; color: white;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" style="max-width: 50px; height: auto;">
+        </a>
+        <a href="https://www.casamentos.pt/musica-casamento/per-melodiam--e136613" target="_blank" style="text-decoration: none; color: white;">
+            <img src="https://play-lh.googleusercontent.com/Z9AK-jetSrFV8OkLqgJB06DEAlc8OxSUis9gLfwennpD0J7GAzQ-daolbePEmolM2Q" alt="LinkedIn" style="max-width: 50px; height: auto;">
+        </a>
+</div>
+
+</div>
+
+
+ </body>
+</html>
+
